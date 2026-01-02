@@ -67,12 +67,12 @@ class GoogleAuthenticator extends AbstractAuthenticator implements Authenticatio
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        return new RedirectResponse($this->urlGenerator->generate('app_image'));
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
     {
-        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        return new RedirectResponse($this->urlGenerator->generate('app_image'));
     }
 
     public function start(Request $request, ?AuthenticationException $authException = null): Response

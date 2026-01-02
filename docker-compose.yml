@@ -19,6 +19,9 @@ services:
       - /var/lib/mysql:/var/lib/mysql
     networks:
       - test_network
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MARIADB_DATABASE}
 
 networks:
   test_network:

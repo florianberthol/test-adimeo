@@ -15,7 +15,8 @@
                     <div class="card-body text-center p-4">
                         <h2 class="h4 mb-3">Connecté avec succès !</h2>
                         <p class="mb-2"><strong>Email :</strong> {{ app.user.userIdentifier }}</p>
-                        <div class="mt-3">
+                        <div class="mt-3 d-flex gap-2 justify-content-center">
+                            <a class="btn btn-primary" href="{{ path('app_image') }}">Voir l'image du jour</a>
                             <a class="btn btn-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
                         </div>
                     </div>

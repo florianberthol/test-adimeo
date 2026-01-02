@@ -17,3 +17,4 @@
 
 docker/frankenphp/data/
 /.idea/
+docker-compose.override.yml
