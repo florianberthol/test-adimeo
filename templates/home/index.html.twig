@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - NASA APOD{% endblock %}
+
+{% block body %}
+<div style="max-width: 800px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
+    <h1 style="text-align: center; color: #333;">Bienvenue sur NASA APOD</h1>
+
+    {% if app.user %}
+        <div style="background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; padding: 20px; margin: 20px 0;">
+            <h2 style="color: #155724; margin-top: 0;">Connecté avec succès !</h2>
+            <p style="color: #155724;">
+                <strong>Email :</strong> {{ app.user.userIdentifier }}
+            </p>
+            <p style="margin-top: 20px;">
+                <a href="{{ path('app_logout') }}" style="background-color: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                    Se déconnecter
+                </a>
+            </p>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <p>Vous pouvez maintenant accéder aux fonctionnalités de l'application.</p>
+        </div>
+    {% else %}
+        <div style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 40px; margin: 20px 0; text-align: center;">
+            <h2 style="color: #333; margin-top: 0;">Authentification requise</h2>
+            <p style="color: #666; font-size: 16px; margin-bottom: 30px;">
+                Connectez-vous avec votre compte Google pour accéder à l'application.
+            </p>
+
+            <a href="{{ path('connect_google_start') }}" style="background-color: #4285f4; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; display: inline-flex; align-items: center; font-size: 16px; font-weight: bold;">
+                <svg style="width: 24px; height: 24px; margin-right: 10px;" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/>
+                </svg>
+                Se connecter avec Google
+            </a>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background-color: #e7f3ff; border-left: 4px solid #2196f3; border-radius: 3px;">
+            <h3 style="margin-top: 0; color: #1976d2;">À propos</h3>
+            <p style="color: #555;">
+                Cette application permet de consulter l'image astronomique du jour (APOD) de la NASA.
+                L'authentification Google est nécessaire pour accéder aux fonctionnalités.
+            </p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
