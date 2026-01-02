@@ -1,0 +1,24 @@
+services:
+  php-test:
+    container_name: php-test
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./:/var/www
+      - ./docker/frankenphp/data:/data/caddy
+    networks:
+      - test_network
+    build: docker/frankenphp
+
+  db-test:
+    image: mariadb:12.1
+    container_name: db-test
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    networks:
+      - test_network
+
+networks:
+  test_network:

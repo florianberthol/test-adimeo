@@ -1,0 +1,8 @@
+localhost {
+    root * /var/www/public
+    tls internal
+    encode
+    log
+
+    php_server
+}
