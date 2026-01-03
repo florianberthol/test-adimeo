@@ -16,12 +16,12 @@ class ImageService
     }
 
     /**
-     * Recupere l'image du jour depuis l'API de la NASA et la stocke en base de données.
+     * Recupere l'url du jour depuis l'API de la NASA et la stocke en base de données.
      */
     public function getImage(): void
     {
         if ($this->isAlreadyGet()) {
-            throw new \RuntimeException('L\'image du jour est déjà recuperée.');
+            throw new \RuntimeException('L\'url du jour est déjà recuperée.');
         }
 
         $response = $this->httpClient->request('GET', 'https://api.nasa.gov/planetary/apod', [
@@ -37,17 +37,18 @@ class ImageService
             $image->setDate(new \DateTime($data['date']));
             $image->setTitle($data['title']);
             $image->setExplanation($data['explanation']);
-            $image->setImage($data['url']);
+            $image->setUrl($data['hdurl']);
+            $image->setType($data['media_type']);
 
             $this->entityManager->persist($image);
             $this->entityManager->flush();
         } else {
-            throw new \RuntimeException('Impossible de récupérer l\'image du jour.');
+            throw new \RuntimeException('Impossible de récupérer l\'url du jour.');
         }
     }
 
     /**
-     * Vérifie si l'image du jour a déjà été récupérée.
+     * Vérifie si l'url du jour a déjà été récupérée.
      */
     private function isAlreadyGet(): bool
     {

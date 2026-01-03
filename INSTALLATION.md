@@ -26,9 +26,9 @@ Pour récuperer les images de la NASA, il faut lancer la commande suivante :
 Le projet est accessible à l'adresse [http://localhost](http://localhost)
 
 ## Choix techniques
- 1. Conteneurisation avec Docker, serveur http frankenphp et base de donné mariadb.
- 2. Utilisation de symfony 7.4
- 3. Connection google avec league/oauth2-google (https://oauth2-client.thephpleague.com/)
- 4. HTTP Client pour l'appel API
- 5. AssetMapper pour la gestion des assets
- 6. Bootstrap 5 pour le css
+ - Conteneurisation avec Docker, serveur http frankenphp et base de donné mariadb.
+ - Utilisation de symfony 7.4
+ - Connection google avec league/oauth2-google (https://oauth2-client.thephpleague.com/)
+ - HTTP Client pour l'appel API
+ - AssetMapper pour la gestion des assets
+ - Bootstrap 5 pour le css

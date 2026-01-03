@@ -17,14 +17,14 @@ class ImageController extends AbstractController
         $image = $imageRepository->findLastImage();
 
         if (!$image) {
-            throw $this->createNotFoundException('No image found.');
+            throw $this->createNotFoundException('Il n\'y a pas encore d\'image disponible.');
         }
 
         return $this->render('image/image.html.twig', [
             'title' => $image->getTitle(),
             'explanation' => $image->getExplanation(),
             'date' => $image->getDate(),
-            'image' => $image->getImage(),
+            'url' => $image->getUrl(),
         ]);
     }
 }

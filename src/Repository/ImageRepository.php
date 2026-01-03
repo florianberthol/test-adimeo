@@ -19,6 +19,8 @@ class ImageRepository extends ServiceEntityRepository
     public function findLastImage(): ?Image
     {
         $qb = $this->createQueryBuilder('i')
+            ->andWhere('i.type in (:types)')
+            ->setParameter('types', Image::AUTHORIZED_TYPES)
             ->orderBy('i.date', 'DESC')
             ->setMaxResults(1);
 

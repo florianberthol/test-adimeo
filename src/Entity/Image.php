@@ -9,6 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 class Image
 {
+    public const AUTHORIZED_TYPES = [
+        'image',
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +28,10 @@ class Image
     private ?string $explanation = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $url = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $type = null;
 
     public function getId(): ?int
     {
@@ -67,14 +74,26 @@ class Image
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getUrl(): ?string
     {
-        return $this->image;
+        return $this->url;
     }
 
-    public function setImage(string $image): static
+    public function setUrl(string $url): static
     {
-        $this->image = $image;
+        $this->url = $url;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
